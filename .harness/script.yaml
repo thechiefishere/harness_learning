@@ -1,7 +1,7 @@
 pipeline:
   name: test-pipeline
   identifier: testpipeline
-  projectIdentifier: default_project
+  projectIdentifier: learning
   orgIdentifier: default
   tags: {}
   variables:
