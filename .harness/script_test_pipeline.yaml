@@ -1,0 +1,45 @@
+pipeline:
+  name: test-pipeline
+  identifier: testpipeline
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  variables:
+    - name: ENV
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+    - name: HPID
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+  stages:
+    - stage:
+        name: Provision
+        identifier: Provision
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "Starting onboarding..."
+
+                          echo "HPID: <+pipeline.variables.HPID>"
+                          echo "ENV: <+pipeline.variables.ENV>"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
